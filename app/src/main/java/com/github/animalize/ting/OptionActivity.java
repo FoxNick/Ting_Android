@@ -21,6 +21,7 @@ import com.github.animalize.ting.Data.TingConfig;
 import com.github.animalize.ting.TTS.Setting;
 import com.github.animalize.ting.TTS.TTSService;
 import com.github.animalize.ting.TingTTS.TingSetting;
+import io.github.pixee.security.BoundedLineReader;
 
 import java.io.BufferedReader;
 import java.io.InputStream;
@@ -337,7 +338,7 @@ public class OptionActivity extends AppCompatActivity implements View.OnClickLis
 
                 html = "";
                 String line;
-                while ((line = reader.readLine()) != null) {
+                while ((line = BoundedLineReader.readLine(reader, 5_000_000)) != null) {
                     html += line;
                 }
 
